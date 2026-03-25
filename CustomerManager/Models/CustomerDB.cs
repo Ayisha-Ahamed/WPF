@@ -14,7 +14,7 @@ public class CustomerDB {
 
    #region Methods --------------------------------------------------
    /// <summary>Save customer objects to csv file</summary>
-   internal static void SaveFile () {
+   public static void SaveFile () {
       List<string> lines = [];
       foreach (var entry in Customers) lines.Add (entry.ToString ());
       File.WriteAllLines ("C:\\Work\\WPF\\CustomerManager\\Data\\Customer.csv", lines);

@@ -5,9 +5,9 @@ using System.Windows;
 
 namespace CustomerManager.ViewModel {
    #region class CustomerDlgViewModel -------------------------------------------------------------
-   class CustomerDlgViewModel : IDataErrorInfo {
+   class EditDBDlgViewModel : IDataErrorInfo {
       #region Constructor -------------------------------------------
-      public CustomerDlgViewModel (Window win, int? index = null) {
+      public EditDBDlgViewModel (Window win, int? index = null) {
          mDlg = win;
          ExecuteOpCommand = new RelayCommand (ExecuteBtnClicked);
          if (index != null) {

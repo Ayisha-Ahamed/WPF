@@ -7,48 +7,48 @@ namespace CustomerManager.Models {
    public class Customer : IDataErrorInfo, INotifyPropertyChanged {
       #region Properties --------------------------------------------
       public int Id {
-         get => _id;
+         get => mId;
          set {
-            _id = value;
+            mId = value;
             OnPropertyChanged ();
          }
       }
 
       public string? FirstName {
-         get => _firstName;
+         get => mFirstName;
          set {
-            _firstName = value;
+            mFirstName = value;
             OnPropertyChanged ();
          }
       }
 
       public string? LastName {
-         get => _lastName;
+         get => mLastName;
          set {
-            _lastName = value;
+            mLastName = value;
             OnPropertyChanged ();
          }
       }
 
       public string? Email {
-         get => _email;
+         get => mEmail;
          set {
-            _email = value;
+            mEmail = value;
             OnPropertyChanged ();
          }
       }
 
       public string? PhoneNo {
-         get => _phoneNo;
+         get => mPhoneNo;
          set {
-            _phoneNo = value;
+            mPhoneNo = value;
             OnPropertyChanged ();
          }
       }
 
-      public event PropertyChangedEventHandler? PropertyChanged;
+      public event PropertyChangedEventHandler? PropertyChanged; // INotifyPropertyChanged
 
-      public string this[string columnName] {
+      public string this[string columnName] { // IDataErrorInfo
          get {
             return columnName switch {
                nameof (Id) => !Regex.IsMatch (Id.ToString (), "[0-9]+") ? "Invalid id" : "",
@@ -70,8 +70,7 @@ namespace CustomerManager.Models {
       /// <summary>Method to convert class object to csv format</summary>
       public override string ToString () => $"{Id},{FirstName},{LastName},{Email},{PhoneNo}";
 
-      /// <summary>IDataErrorinfo interface implementation</summary>
-      public string Error => throw new NotImplementedException ();
+      public string Error => throw new NotImplementedException ();  // IDataErrorInfo
       #endregion
 
       #region Implementation ----------------------------------------
@@ -83,11 +82,11 @@ namespace CustomerManager.Models {
 
       #region Private Data ------------------------------------------
       // Backing field for properties
-      int _id;
-      string? _firstName;
-      string? _lastName;
-      string? _email;
-      string? _phoneNo;
+      int mId;
+      string? mFirstName;
+      string? mLastName;
+      string? mEmail;
+      string? mPhoneNo;
       #endregion
    }
    #endregion

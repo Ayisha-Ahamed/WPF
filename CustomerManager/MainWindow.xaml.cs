@@ -1,5 +1,4 @@
 ﻿using CustomerManager.Models;
-using CustomerManager.View;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Windows;
@@ -11,9 +10,9 @@ public partial class MainWindow : Window {
    public ObservableCollection<Customer> Customers { get; set; }
 
    public MainWindow () {
-      InitializeComponent ()  ;
+      InitializeComponent ();
       this.DataContext = this;
-      Customers = CustomerDB.Customers; ;
+      Customers = CustomerDB.Customers;
    }
 
    #region Event Handlers -------------------------------------------
@@ -23,14 +22,14 @@ public partial class MainWindow : Window {
    }
 
    void OnClickedAdd (object sender, RoutedEventArgs e) {
-      AddCustomer addCustomerDlg = new ();
+      EditDBDlg addCustomerDlg = new ();
       addCustomerDlg.ShowDialog ();
    }
 
    void OnClickedEdit (object sender, RoutedEventArgs e) {
       int index = CustomerList.SelectedIndex;
       if (index != -1) {
-         AddCustomer editCustomerDlg = new (index);
+         EditDBDlg editCustomerDlg = new (index);
          editCustomerDlg.ShowDialog ();
       }
    }
