@@ -1,0 +1,87 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d" KeyDown="OnKeyPressed"
+        Title="Calculator" MinHeight="500" MinWidth="360" MaxWidth="800" SizeToContent="WidthAndHeight">
+   <Window.Resources>
+
+      <Style x:Key="RoundButton" TargetType="Button">
+         <Setter Property="Template">
+            <Setter.Value>
+               <ControlTemplate TargetType="Button">
+                  <Border BorderThickness="{TemplateBinding BorderThickness}" 
+                          Background="{TemplateBinding Background}" 
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          CornerRadius="10" >
+                     <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    RecognizesAccessKey="True"/>
+                  </Border>
+               </ControlTemplate>
+            </Setter.Value>
+         </Setter>
+      </Style>
+
+      <Style x:Key="NumControl" TargetType="Button" BasedOn="{StaticResource RoundButton}">
+         <Setter Property="MinHeight" Value="50"/>
+         <Setter Property="MinWidth" Value="50"/>
+         <Setter Property="HorizontalContentAlignment" Value= "Center"/>
+         <Setter Property="VerticalContentAlignment" Value= "Center"/>
+         <Setter Property="Background" Value="White"/>
+         <Setter Property="Padding" Value="30"/>
+         <Setter Property="Foreground" Value="Black"/>
+         <Setter Property="BorderBrush" Value="Gainsboro"/>
+         <Setter Property="Tag" Value="Number"/>
+         <Setter Property="BorderThickness" Value="1"/>
+         <Setter Property="Margin" Value="5"/>
+      </Style>
+
+      <Style x:Key="OpControl" TargetType="Button" BasedOn="{StaticResource NumControl}">
+         <Setter Property="Background" Value="Gainsboro"/>
+         <Setter Property="FontFamily" Value="Calibri"/>
+         <Setter Property="FontSize" Value="14"/>
+         <Setter Property="Tag" Value="Function"/>
+         <Setter Property="Opacity" Value="0.7"/>
+      </Style>
+
+   </Window.Resources>
+   <StackPanel Name="mainGrid" Margin="5">
+      <Viewbox MaxHeight="25" MaxWidth="340" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+         <TextBlock  Name="txtPrev" Text=" " TextWrapping="Wrap" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
+      </Viewbox>
+      <Viewbox MaxHeight="50" MinHeight="50"   MaxWidth="340" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+         <TextBlock Name="txtDisplay" Height="{Binding ElementName=RowHeightDefinition, Path=Height}" Width ="{Binding ElementName=ColumnWidthDefinition, Path=Width}" 
+                    FontSize="35" Text="0" Margin="5,0,10,5" FontWeight="DemiBold" />
+      </Viewbox>
+      <UniformGrid Name="ButtonPad" Margin="0,5" Rows="6" Columns="4" ButtonBase.Click="Button_OnClicked">
+         <Button Name="Percentage" Content="%" Style="{StaticResource OpControl}"/>
+         <Button Name="ClearEntry" Tag="UIControl" Content="CE" Style="{StaticResource OpControl}"/>
+         <Button Name="Clear" Tag="UIControl" Content="C" Style="{StaticResource OpControl}"/>
+         <Button Name="BackSpace" Tag="UIControl" Content="⌫" Style="{StaticResource OpControl}" Click="Button_OnClickedBackSpace"/>
+         <Button Name="Reciprocate" Content="1/x" Style="{StaticResource OpControl}"/>
+         <Button Name="Square" Content="x²" Style="{StaticResource OpControl}" />
+         <Button Name="SquareRoot" Content="²√x" Style="{StaticResource OpControl}" />
+         <Button Name="Divide" Tag="Arith" Content="÷" Style="{StaticResource OpControl}"/>
+         <Button Name="D7" Content="7" Style="{StaticResource NumControl}"/>
+         <Button Name="D8" Content="8" Style="{StaticResource NumControl}"/>
+         <Button Name="D9" Content="9" Style="{StaticResource NumControl}"/>
+         <Button Name="Multiply" Tag="Arith" Content="x" Style="{StaticResource OpControl}"/>
+         <Button Name="D4" Content="4" Style="{StaticResource NumControl}"/>
+         <Button Name="D5" Content="5" Style="{StaticResource NumControl}"/>
+         <Button Name="D6" Content="6" Style="{StaticResource NumControl}"/>
+         <Button Name="Subtract" Tag="Arith" Content="−" Style="{StaticResource OpControl}"/>
+         <Button Name="D1" Content="1" Style="{StaticResource NumControl}"/>
+         <Button Name="D2" Content="2" Style="{StaticResource NumControl}"/>
+         <Button Name="D3" Content="3" Style="{StaticResource NumControl}"/>
+         <Button Name="Add" Tag="Arith" Content="+" Style="{StaticResource OpControl}" />
+         <Button Name="ChangeSign" Content="+/-" Style="{StaticResource NumControl}"/>
+         <Button Name="D0" Content="0" Style="{StaticResource NumControl}"/>
+         <Button Name="Decimal" Tag="Decimal" Content="." Style="{StaticResource NumControl}" />
+         <Button Name="Equals" Content="=" Foreground="White" FontWeight="ExtraBold" 
+                 Background="DeepSkyBlue" Style="{StaticResource OpControl}"/>
+      </UniformGrid>
+   </StackPanel>
+</Window>
