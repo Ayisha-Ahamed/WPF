@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--Colors-->
+    <Color x:Key="BackgroundColor">#F5F6FA</Color>
+    <Color x:Key="ButtonColor">LightGray</Color>
+
+    <!--Brushes-->
+    <SolidColorBrush x:Key="WinBackground" Color="{StaticResource BackgroundColor}"/>
+    <SolidColorBrush x:Key="BtnBackground" Color="{StaticResource ButtonColor}"/>
+
+    <!--Window Style-->
+    <Style TargetType="Window" x:Key="DialogBase">
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="ShowInTaskbar" Value="False"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="BorderBrush" Value="DarkRed"/>
+                <Setter Property="BorderThickness" Value="0.5"/>
+                <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Width" Value="125"/>
+        <Setter Property="MinHeight" Value="23"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="MinHeight" Value="23"/>
+        <Setter Property="Margin" Value="2,2,0,2"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!--Style for all the comboboxes used in dialogs.-->
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="Width" Value="125"/>
+        <Setter Property="MinHeight" Value="23"/>
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
+    <!--Style for all the buttons used in dialogs.-->
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="MinWidth" Value="75"/>
+        <Setter Property="MinHeight" Value="22"/>
+        <Setter Property="Background" Value="{StaticResource BtnBackground}"/>
+    </Style>
+
+    <!--Alternation converter used for alternating the color in listview.-->
+    <AlternationConverter x:Key="BackgroundConverter">
+        <SolidColorBrush>AliceBlue</SolidColorBrush>
+        <SolidColorBrush>White</SolidColorBrush>
+    </AlternationConverter>
+
+    <!--Style for the listviewitem having alternating color background.-->
+    <Style TargetType="ListViewItem" x:Key="AlternationColorListViewStyle">
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=(ItemsControl.AlternationIndex), Converter={StaticResource BackgroundConverter}}"/>
+        <Setter Property="BorderBrush" Value="LightSteelBlue"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+    </Style>
+
+    <!--Style for the ListViewItem used in the CustomListViewDataGrid.-->
+    <Style TargetType="{x:Type ListViewItem}" x:Key="ListViewItemStyle">
+        <Setter Property="BorderBrush" Value="LightSteelBlue"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+    </Style>
+</ResourceDictionary>

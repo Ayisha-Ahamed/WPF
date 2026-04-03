@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+	<OutDir>..\bin\</OutDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Nexus.Core.csproj" />
+    <ProjectReference Include="..\Data\Nexus.Data.csproj" />
+    <ProjectReference Include="..\UI\Nexus.UI.csproj" />
+  </ItemGroup>
+
+</Project>

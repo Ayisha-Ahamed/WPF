@@ -1,0 +1,22 @@
+﻿<Window x:Class="Nexus.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nexus.App"
+        xmlns:ui="clr-namespace:Nexus.UI;assembly=Nexus.UI"
+        mc:Ignorable="d" Title="Nexus" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <DockPanel LastChildFill="True" Margin="5">
+        <StackPanel DockPanel.Dock="Bottom" Margin="10" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Margin" Value="0,0,10,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="_Add" Name="BtnAdd" Command="ui:Commands.Add"/>
+            <Button Content="_Edit" Name="BtnEdit" Command="ui:Commands.Edit"/>
+            <Button Content="_Delete" Name="BtnRemove" Command="ui:Commands.Delete"/>
+        </StackPanel>
+        <ListView x:Name="Lst"/>
+    </DockPanel>
+</Window>

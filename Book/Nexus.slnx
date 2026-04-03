@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="App\Nexus.App.csproj" />
+  <Project Path="Core/Nexus.Core.csproj" Id="ccb4796a-8d04-4fb8-8e50-78b1dce15937" />
+  <Project Path="Data/Nexus.Data.csproj" Id="09eca375-983a-418d-8d65-93163f71ecdf" />
+  <Project Path="UI/Nexus.UI.csproj" Id="6701a7ce-dd08-41db-8577-a41e31a5e6a7" />
+</Solution>
